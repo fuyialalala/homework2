@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .form {
+        border: 2px solid rgb(198, 184, 184);
+        border-radius: 10px;
+        width: 450px;
+        height: 1050px;
+        background-color: rgb(231, 231, 231);
+      }
+      span {
+        color: red;
+      }
+
+    </style>
+    <style>
+      #vcode {
+        display: inline-block;
+        text-align: left;
+        height: 20px;
+        width: 170px;
+        padding: 0px;
+        margin: 0px;
+        border-collapse: collapse;
+        border: 1px solid black;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      #code {
+        display: inline-block;
+        text-align: left;
+        width: 50px;
+        height: 20px;
+        padding: 0px;
+        margin: 0px;
+        color: #ffffff;
+        background-color: #000000;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      #next {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        padding: 0px;
+        margin: 0px;
+        vertical-align: middle;
+      }
+      #collage {
+        display: inline-block;
+        align-items: left;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form">
+      <h3 style="color: blue">&nbsp;欢迎注册会员</h3>
+
+      &nbsp;<strong>手机号码：</strong>
+      <input
+        type="text"
+        name="username"
+        maxlength="11"
+        placeholder="11位手机号码"
+      />
+      <span>必填</span>
+      <br />
+      <br>
+      &nbsp;<strong>创建密码：</strong>
+      <input type="password" name="pwd" maxlength="8" placeholder="8位密码" />
+      <span>必填</span>
+      <br />
+      <br>
+      &nbsp;<strong>注册邮箱：</strong>
+      <input
+        type="text"
+        name="post"
+        maxlength="20"
+        placeholder="例如:wustzz@sina,com"
+      />
+      <span>必填</span>
+      <br />
+      <br>
+      &nbsp;<strong>验证码：</strong>
+      <input
+        type="text"
+        id="vcode"
+        name="code"
+        maxlength="4"
+        placeholder="验证码"
+        onfocus="this.value=''"
+        onblur="if(this.value=='')this.value='验证码'"
+      />
+      <span id="code"></span>
+      <span title="看不清，换一张">
+        <img src="images/apple.jpg" alt="" id="next" />
+      </span>
+      <br />
+      <br>
+      &nbsp;<strong>性别：</strong>
+      <input type="radio" name="sex" value="male" />男
+      <input type="radio" name="sex" value="female" />女
+      <br />
+      <br>
+      &nbsp;<strong>生日：</strong>
+      <input type="text" name="birthday" value="年/月/日" />
+      <br>
+      <br>
+      &nbsp;<strong>年龄：</strong>
+      <input type="text" name="age" maxlength="3" />
+      <br />
+      <br>
+      &nbsp;<strong>籍贯：</strong>
+      <select name="provence">
+        <option value="0" selected="selected">湖北省</option>
+      </select>
+      <select name="shi">
+        <option value="0" selected="selected">武汉</option>
+      </select>
+      <br />
+      <br>
+      &nbsp;<strong>月薪：</strong>
+      <input
+        type="range"
+        id="wage"
+        name="wage"
+        min="0.0"
+        max="10000.0"
+        step="500"
+        value="5000.0"
+      />
+      <span id="msg"></span>
+      <script>
+        var msg = document.getElementById("msg");
+        window.onload = function () {
+          msg.innerHTML = document.getElementById("wage").value;
+        };
+        document.getElementById("wage").onchange = function () {
+          msg.innerHTML = this.value;
+        };
+      </script>
+      <br>
+      <br />
+      &nbsp;<strong>个人爱好：</strong>
+      <label> <input type="checkbox" name="like" value="sing" />唱歌 </label>
+      <label> <input type="checkbox" name="like" value="run" />跑步 </label>
+      <label> <input type="checkbox" name="like" value="swim" />游泳 </label>
+      <br />
+      <br>
+      &nbsp;<strong>个人照片：</strong>
+
+      <input type="file" id="test-image-file" name="test" />
+      <div
+        id="test-image-preview"
+        style="
+          border: 1px solid silver;
+          width: 100%;
+          height: 200px;
+          background-repeat: no-repeat;
+          background-position: center;
+        "
+      >
+        
+      </div>
+      
+      <script>
+        var fileInput = document.getElementById("test-image-file");
+        var info = document.getElementById("test-file-info");
+        var preview = document.getElementById("test-image-preview");
+        fileInput.addEventListener("change", function () {
+          // 监听change事件
+          preview.style.backgroundImage = ""; // 清除背景图片
+          if (!fileInput.value) {
+            info.innerHTML = "没有选择文件";
+            return;
+          }
+          var file = fileInput.files[0]; // 获取File引用
+          // 获取File信息:
+          info.innerHTML =
+            "文件: " +
+            file.name +
+            "<br>" +
+            "大小: " +
+            file.size +
+            "<br>" +
+            "修改: " +
+            file.lastModifiedDate;
+          if (
+            file.type !== "image/jpeg" &&
+            file.type !== "image/png" &&
+            file.type !== "image/gif"
+          ) {
+            alert("不是有效的图片文件!");
+            return;
+          }
+          var reader = new FileReader(); // 读取文件
+          reader.onload = function (e) {
+            // 发起一个异步操作来读取文件内容
+            var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+            preview.style.backgroundImage = "url(" + data + ")";
+          };
+          reader.readAsDataURL(file); // 以DataURL的形式读取文件
+        });
+      </script>
+      <br />
+      <br>
+      &nbsp;<strong>个人简介：</strong>
+      <br />
+      <br>
+      <textarea name="intro" id="" cols="30" rows="10"></textarea>
+      <br />
+      <br>
+      <input type="submit" value="提交" />
+      <input type="reset" value="重填" />
+    </form>
+    <script type="text/javascript">
+      var code; //声明一个变量用于存储生成的验证码
+      document.getElementById("next").onclick = changeImg;
+      function changeImg() {
+        var arrays = new Array(
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "Z"
+        );
+        code = ""; //重新初始化验证码
+        //alert(arrays.length);
+        //随机从数组中获取四个元素组成验证码
+        for (var i = 0; i < 4; i++) {
+          //随机获取一个数组的下标
+          var r = parseInt(Math.random() * arrays.length);
+          code += arrays[r];
+        }
+        document.getElementById("code").innerHTML = code; //将验证码写入指定区域
+      }
+
+      //效验验证码(表单被提交时触发)
+      function check() {
+        //获取用户输入的验证码
+        var input_code = document.getElementById("vcode").value;
+        // if (input_code.toLowerCase() == code.toLowerCase()) {
+        //   //验证码正确(表单提交)
+        //   return true;
+        // }
+        // alert("请输入正确的验证码!");
+        // //验证码不正确,表单不允许提交
+
+        // return false;
+      }
+    </script>
+  </body>
+</html>
