@@ -8,13 +8,27 @@
       .form {
         border: 2px solid rgb(198, 184, 184);
         border-radius: 10px;
-        width: 450px;
-        height: 1050px;
+        width: 500px;
+        height: 1070px;
         background-color: rgb(231, 231, 231);
+        position: relative;
       }
       span {
         color: red;
+        position: relative;
+        left:220px ;
       }
+      .frame {
+        width: 200px;
+        height: 25px;
+      }
+      .form #cen{
+        margin:0 auto;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+      }
+
     </style>
     <style>
       #vcode {
@@ -59,23 +73,28 @@
     <form class="form">
       <h3 style="color: blue">&nbsp;欢迎注册会员</h3>
 
-      &nbsp;<strong>手机号码：</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong >手机号码：</strong>
       <input
+        id="cen"
+        class="frame"
         type="text"
         name="username"
         maxlength="11"
         placeholder="11位手机号码"
+        
       />
       <span>必填</span>
       <br />
-      <br>
-      &nbsp;<strong>创建密码：</strong>
-      <input type="password" name="pwd" maxlength="8" placeholder="8位密码" />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>创建密码：</strong>
+      <input id="cen" class="frame" type="password" name="pwd" maxlength="8" placeholder="8位密码" />
       <span>必填</span>
       <br />
-      <br>
-      &nbsp;<strong>注册邮箱：</strong>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注册邮箱：</strong>
       <input
+        id="cen"
+        class="frame"
         type="text"
         name="post"
         maxlength="20"
@@ -83,9 +102,11 @@
       />
       <span>必填</span>
       <br />
-      <br>
-      &nbsp;<strong>验证码：</strong>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>验证码：</strong>
       <input
+        id="cen"
+        class="frame"
         type="text"
         id="vcode"
         name="code"
@@ -99,31 +120,38 @@
         <img src="images/apple.jpg" alt="" id="next" />
       </span>
       <br />
-      <br>
-      &nbsp;<strong>性别：</strong>
-      <input type="radio" name="sex" value="male" />男
-      <input type="radio" name="sex" value="female" />女
       <br />
-      <br>
-      &nbsp;<strong>生日：</strong>
-      <input type="text" name="birthday" value="年/月/日" />
-      <br>
-      <br>
-      &nbsp;<strong>年龄：</strong>
-      <input type="text" name="age" maxlength="3" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><strong>性别：</strong>
+      <input  type="radio" name="sex" value="male" />男
+      <input  type="radio" name="sex" value="female" />女
       <br />
-      <br>
-      &nbsp;<strong>籍贯：</strong>
-      <select name="provence">
-        <option value="0" selected="selected">湖北省</option>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>生日：</strong>
+      <input class="frame" type="date" name="mydate">
+      <br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>年龄：</strong>
+      <input class="frame" type="text" name="age" maxlength="3" />
+      <br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>籍贯：</strong>
+      <select name="provence" style="width: 100px; height: 25px;">
+        <option  value="0" selected="selected">湖北省</option>
       </select>
-      <select name="shi">
-        <option value="0" selected="selected">武汉</option>
+      <select name="shi" style="width: 100px; height: 25px;">
+        <option  value="0" selected="selected">武汉</option>
+      </select>
+      <br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>个人学历：</strong>
+      <select name="degree" class="frame">
+      <option  value="0" selected="selected">本科</option>
       </select>
       <br />
-      <br>
-      &nbsp;<strong>月薪：</strong>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>月薪：</strong>
       <input
+        class="frame"
         type="range"
         id="wage"
         name="wage"
@@ -131,8 +159,9 @@
         max="10000.0"
         step="500"
         value="5000.0"
+        style="color: aqua;"
       />
-      <span id="msg"></span>
+      <span id="msg" style="color: black; position: relative; left: 0px; bottom: 5px;"></span>
       <script>
         var msg = document.getElementById("msg");
         window.onload = function () {
@@ -142,30 +171,30 @@
           msg.innerHTML = this.value;
         };
       </script>
-      <br>
       <br />
-      &nbsp;<strong>个人爱好：</strong>
-      <label> <input type="checkbox" name="like" value="sing" />唱歌 </label>
-      <label> <input type="checkbox" name="like" value="run" />跑步 </label>
-      <label> <input type="checkbox" name="like" value="swim" />游泳 </label>
       <br />
-      <br>
-      &nbsp;<strong>个人照片：</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>个人爱好：</strong>
+      <label> <input  type="checkbox" name="like" value="sing" />唱歌 </label>
+      <label> <input  type="checkbox" name="like" value="run" />跑步 </label>
+      <label> <input  type="checkbox" name="like" value="swim" />游泳 </label>
+      <br />
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>个人照片：</strong>
 
       <input type="file" id="test-image-file" name="test" />
       <div
         id="test-image-preview"
         style="
           border: 1px solid silver;
-          width: 100%;
+          width: 50%;
           height: 200px;
           background-repeat: no-repeat;
           background-position: center;
+          position: relative;
+          left: 150px;
         "
-      >
-        
-      </div>
-      
+      ></div>
+
       <script>
         var fileInput = document.getElementById("test-image-file");
         var info = document.getElementById("test-file-info");
@@ -206,15 +235,15 @@
         });
       </script>
       <br />
-      <br>
-      &nbsp;<strong>个人简介：</strong>
       <br />
-      <br>
-      <textarea name="intro" id="" cols="30" rows="10"></textarea>
+      &nbsp;<strong style="position: relative; top: 120px;">个人简介：</strong>
       <br />
-      <br>
-      <input type="submit" value="提交" />
-      <input type="reset" value="重填" />
+      <br />
+      <textarea name="intro" id="cen" cols="30" rows="10"></textarea>
+      <br />
+      <br />
+      <input style="position: relative; top: 120px; left: 150px;" type="submit" value="提交" />
+      <input style="position: relative; top: 120px; left: 150px;" type="reset" value="重填" />
     </form>
     <script type="text/javascript">
       var code; //声明一个变量用于存储生成的验证码
